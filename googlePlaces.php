@@ -79,7 +79,7 @@ class googlePlaces
 
 	public function setName($name)
 	{
-		$this->_name = $name;
+		$this->_name = urlencode($name);
 	}
 
 	public function setSensor($sensor)
