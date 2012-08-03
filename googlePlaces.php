@@ -168,31 +168,25 @@ class googlePlaces
 			foreach($result['result']['address_components'] as $key=>$component) {
 	
 				if($component['types'][0]=="street_number") {
-					$address_street_number = $component['short_name'];
+			    $result['result']['address_fixed']['street_number'] = $component['short_name'];
 				}
 	
 				if($component['types'][0]=="route") {
-					$address_street_name = $component['short_name'];
+			    $result['result']['address_fixed']['address_street_name'] = $component['short_name'];
 				}
 	
 				if($component['types'][0]=="locality") {
-					$address_city = $component['short_name'];
+          $result['result']['address_fixed']['address_city'] = $component['short_name'];
 				}
 	
 				if($component['types'][0]=="administrative_area_level_1") {
-					$address_state = $component['short_name'];
+          $result['result']['address_fixed']['address_state'] = $component['short_name'];
 				}
 	
 				if($component['types'][0]=="postal_code") {
-					$address_postal_code = $component['short_name'];
+          $result['result']['address_fixed']['address_postal_code'] = $component['short_name'];
 				}
 			}
-
-			$result['result']['address_fixed']['street_number'] = $address_street_number;
-			$result['result']['address_fixed']['address_street_name'] = $address_street_name;
-			$result['result']['address_fixed']['address_city'] = $address_city;
-			$result['result']['address_fixed']['address_state'] = $address_state;
-			$result['result']['address_fixed']['address_postal_code'] = $address_postal_code;
 		}
 		
 		return $result;
